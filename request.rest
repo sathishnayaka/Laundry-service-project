@@ -1,0 +1,31 @@
+GET http://localhost:3001/users
+
+###
+
+POST http://localhost:3001/users
+Content-Type: application/json
+
+{
+    "name" : "Tannu",
+    "email" : "sha5ssd6323@gmail.com",
+    "password" : "sathish",
+    "phone" : 9114567724166,
+    "district" : "Mysore",
+    "state" : "karnataka",
+    "pincode" : 561228,
+    "homeaddress" : "Near govt school katanakallu"
+}
+
+###
+
+POST http://localhost:3000/users/login
+Content-Type: application/json
+
+{
+    "email":"tannu@gmail.com",
+    "password" : "sathish"
+}
+
+###
+
+GET http://localhost:3000/home
