@@ -10,9 +10,9 @@ require('dotenv').config(); // configration of dotenv file to access
 const { TOKEN_KEY } = process.env;
 const verifyToken=require('../Models/Middleware/Auth')
 //  connecting to the database
-var db = "mongodb://localhost:27017/User";
-mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true },()=>{console.log("connected to the database")});
-
+// var db = "mongodb://localhost:27017/User";
+// mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true },()=>{console.log("connected to the database")});
+require('../config/dataBase');
 
 const app=express();
 router.use(express.json())
@@ -81,6 +81,7 @@ router.post('/users', async (req,res)=>{
 })
 
 router.post('/users/login', async (req,res)=>{
+    console.log(req.body)
     if(!req.body.email || !req.body.password )
     {
         return res.status(422).json({error:"Add all data"})
@@ -97,7 +98,7 @@ router.post('/users/login', async (req,res)=>{
     console.log(user)
     if (user===null){
         console.log("cont find the user")
-        return res.json({message : "please provide a valid email/phone"})
+        return res.json({error : "please provide a valid email/phone"})
     }
     try{
         console.log(user.password)
@@ -107,9 +108,8 @@ router.post('/users/login', async (req,res)=>{
             });
             user.token=token
             res.status(200).json(user);
-            res.json({loggedIn : true})
         }else{
-            res.json({loggedIn : false})
+            res.json({error : "Incorrect Password"})
             console.log("incorrect password")
         }
 

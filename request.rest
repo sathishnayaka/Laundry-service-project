@@ -13,12 +13,12 @@ Content-Type: application/json
     "district" : "Mysore",
     "state" : "karnataka",
     "pincode" : 561228,
-    "homeaddress" : "Near govt school katanakallu"
+    "address" : "Near govt school katanakallu"
 }
 
 ###
 
-POST http://localhost:3000/users/login
+POST http://localhost:3001/users/login
 Content-Type: application/json
 
 {

@@ -4,7 +4,7 @@ const cors=require('cors');
 var Login=require('./routers/Login');
 
 app.use(cors({
-    origin : "http://localhost:3000"
+    origin : "*"
 }
     
 ))
